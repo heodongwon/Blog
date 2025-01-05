@@ -1,0 +1,46 @@
+spring:
+  application:
+    name: backend
+
+  config:
+    import: optional:file:.env[.properties]
+
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://${MYSQL_HOST}:${MYSQL_PORT}/${MYSQL_DB}
+    username: ${MYSQL_USER}
+    password: ${MYSQL_PASSWORD}
+
+  sql:
+    init:
+      mode: always
+      encoding: UTF-8
+
+  jpa:
+    defer-datasource-initialization: true
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.MySQLDialect
+        check_nullability: true
+    hibernate:
+      ddl-auto: ${DDL_AUTO_OPTION}
+      naming:
+        physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
+
+  jwt:
+    secret: ${JWT_SECRET_KEY}
+    refresh:
+      cookie:
+        path: ${JWT_REFRESH_COOKIE_PATH}
+
+  cors:
+    url: ${CORS_URL}
+
+server:
+  forward-headers-strategy: framework
+
+logging:
+  level:
+    org:
+      hibernate:
+        SQL: ${LOG_LEVEL}
