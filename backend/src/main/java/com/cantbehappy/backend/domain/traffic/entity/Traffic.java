@@ -1,15 +1,12 @@
-package com.cantbehappy.backend.domain.post.entity;
+package com.cantbehappy.backend.domain.traffic.entity;
 
-import com.cantbehappy.backend.domain.comment.entity.Comment;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import java.time.LocalDateTime;
-import java.util.List;
 import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -18,33 +15,21 @@ import lombok.ToString;
 @Entity
 @Getter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
-@Table(name = "post")
+@Table(name = "traffic")
 @ToString
-public class Post {
+public class Traffic {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
     private Long id;
 
-    @Column
-    private String uuid;
+    @Column(name="ip_addr")
+    private String ipAddr;
 
-    @Column
-    private String title;
+    @Column(name="visited_at")
+    private LocalDateTime visitedAt;
 
-    @Column
-    private String content;
-
-    @Column
-    private LocalDateTime createdAt;
-
-    @Column
-    private LocalDateTime updatedAt;
-
-    @Column
-    private Long viewCount;
-
-    @OneToMany(mappedBy = "post")
-    private List<Comment> comments;
+    @Column(name="page")
+    private String page;
 }
