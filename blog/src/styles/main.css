@@ -1,0 +1,21 @@
+/* // styles/main.css */
+.container {
+  display: flex;
+  padding: 20px;
+}
+.category-bar {
+  width: 200px;
+  margin-right: 20px;
+}
+.post-list {
+  flex: 1;
+}
+.post-item {
+  margin-bottom: 20px;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+.post-item h2 {
+  margin: 0 0 10px;
+}
